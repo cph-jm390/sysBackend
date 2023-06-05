@@ -1,7 +1,5 @@
 package facades;
 
-import entities.Animal;
-import entities.Fact;
 import entities.User;
 import org.junit.jupiter.api.*;
 import utils.EMF_Creator;
@@ -15,13 +13,12 @@ class UserFacadeTest {
 
     private static EntityManagerFactory emf;
     private static UserFacade facade;
-    private static FactFacade factFacade;
 
     @BeforeAll
     public static void setUpClass() {
         emf = EMF_Creator.createEntityManagerFactoryForTest();
         facade = UserFacade.getFacade(emf);
-        factFacade = FactFacade.getFacade(emf);
+
     }
 
     @AfterAll

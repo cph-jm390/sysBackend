@@ -22,17 +22,8 @@ public class User implements Serializable {
   @Column(name = "user_password", nullable = false)
   private String userPass;
 
-  @JoinTable(name = "user_animals", joinColumns = {
-    @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
-    @JoinColumn(name = "animal_name", referencedColumnName = "animal_name")})
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Animal> animalList = new ArrayList<>();
 
-  @JoinTable(name = "user_facts", joinColumns = {
-    @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
-    @JoinColumn(name = "fact_id", referencedColumnName = "id")})
-  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Fact> factList = new ArrayList<>();
+
 
 
   @JoinTable(name = "user_roles", joinColumns = {
@@ -94,19 +85,5 @@ public class User implements Serializable {
     roleList.add(userRole);
   }
 
-  public List<Animal> getAnimalList() {
-    return animalList;
-  }
 
-  public List<Fact> getFactList() {
-    return factList;
-  }
-
-  public void setFactList(List<Fact> factList) {
-    this.factList = factList;
-  }
-
-  public void setAnimalList(List<Animal> animalList) {
-    this.animalList = animalList;
-  }
 }
